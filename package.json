@@ -1,0 +1,8 @@
+{
+  "name": "word-solitaire-1v1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ad-free multiplayer word-association solitaire. Race 1v1: first to clear the board wins.",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" }
+}

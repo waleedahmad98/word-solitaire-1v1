@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Word Solitaire 1v1</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Menu -->
+  <section id="menu" class="screen">
+    <div class="panel">
+      <h1>Word Solitaire <span class="vs">1v1</span></h1>
+      <p class="sub">Sort words into their categories. First to clear the board wins.</p>
+      <label class="field">Your name<input id="name" maxlength="16" placeholder="Player" autocomplete="off" /></label>
+      <button id="btnQuick" class="primary">Quick match</button>
+      <button id="btnCreate">Create private room</button>
+      <div class="row">
+        <input id="joinCode" maxlength="5" placeholder="Room code" autocomplete="off" />
+        <button id="btnJoin">Join</button>
+      </div>
+      <button id="btnSolo" class="ghost">Practice solo</button>
+      <p id="menuErr" class="err"></p>
+      <details class="rules">
+        <summary>How to play</summary>
+        <ul>
+          <li>Put a <b>category card</b> into an empty home slot (top row) to open that category.</li>
+          <li>Send matching <b>word cards</b> onto it. When every word is home, the category clears and frees the slot.</li>
+          <li>In the columns, stack words on words of the same category. Any card can go into an empty column.</li>
+          <li>Tap the deck to draw. Tap a card to select it, then tap where it goes, or drag it. Double-tap sends it to the best spot.</li>
+          <li><b>1v1:</b> you both get the same deal. Whoever clears first wins. If time runs out, the higher score wins.</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- Lobby -->
+  <section id="lobby" class="screen hidden">
+    <div class="panel">
+      <h2>Room <span id="lobbyCode" class="code"></span></h2>
+      <p class="sub" id="lobbyHint">Share this link with your opponent:</p>
+      <div class="row"><input id="shareLink" readonly /><button id="btnCopy">Copy</button></div>
+      <ul id="lobbyPlayers" class="players"></ul>
+      <button id="btnReady" class="primary">I'm ready</button>
+      <button id="btnLeave" class="ghost">Leave</button>
+    </div>
+  </section>
+
+  <!-- Game -->
+  <section id="game" class="screen hidden">
+    <header id="hud">
+      <div class="side me">
+        <div class="pname" id="meName">You</div>
+        <div class="pscore" id="meScore">0</div>
+        <div class="bar"><i id="meBar"></i></div>
+      </div>
+      <div class="mid">
+        <div id="timer">0:00</div>
+        <div id="moves" class="small">0 moves</div>
+      </div>
+      <div class="side opp" id="oppSide">
+        <div class="pname" id="oppName">Opponent</div>
+        <div class="pscore" id="oppScore">0</div>
+        <div class="bar"><i id="oppBar"></i></div>
+      </div>
+    </header>
+    <div id="board">
+      <div id="topRow">
+        <div id="slots"></div>
+        <div id="deck">
+          <div id="waste" class="pile"></div>
+          <div id="stock" class="pile" data-drop="stock"></div>
+        </div>
+      </div>
+      <div id="columns"></div>
+    </div>
+    <footer id="tools">
+      <button id="btnUndo">↶ Undo</button>
+      <button id="btnHint">💡 Hint</button>
+      <button id="btnQuit" class="ghost">Give up</button>
+    </footer>
+    <div id="toast"></div>
+  </section>
+
+  <div id="overlay" class="hidden"><div class="panel" id="overlayBody"></div></div>
+
+  <script src="words.js"></script>
+  <script src="game.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
